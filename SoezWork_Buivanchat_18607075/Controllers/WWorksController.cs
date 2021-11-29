@@ -153,7 +153,7 @@ namespace SoezWork_Buivanchat_18607075.Controllers
 
 
                 var f_password = GetMD5(password);
-
+                //saigido
                 var data = db.AccountUsers.Where(s => s.UserName.Equals(username) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {

@@ -1,0 +1,35 @@
+﻿@model SoezWork_Buivanchat_18607075.Models.UserType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

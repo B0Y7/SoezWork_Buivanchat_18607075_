@@ -1,0 +1,171 @@
+﻿@model SoezWork_Buivanchat_18607075.Models.SystemUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SystemUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginFailedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginFailedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginFailedCount2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginFailedCount2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginFailedCount3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginFailedCount3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastChangedPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastChangedPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfileImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositionId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,154 @@
+﻿@model IEnumerable<SoezWork_Buivanchat_18607075.Models.Branch>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameBranch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDviqly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchParent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WardId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DistrictId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProvinceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DistrictName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WardName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxDebitAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CooperationDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalDepartment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalStaff)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notdisplaysizecolor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MA_DVIQLY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDisplay)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameBranch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDviqly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchParent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistrictId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProvinceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistrictName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WardName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxDebitAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CooperationDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalDepartment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalStaff)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notdisplaysizecolor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MA_DVIQLY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDisplay)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BranchId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BranchId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BranchId })
+        </td>
+    </tr>
+}
+
+</table>

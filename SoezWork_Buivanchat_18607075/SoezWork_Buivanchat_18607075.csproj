@@ -132,8 +132,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountUsersController.cs" />
+    <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PositionUsersController.cs" />
+    <Compile Include="Controllers\SystemUsersController.cs" />
+    <Compile Include="Controllers\UserTypesController.cs" />
     <Compile Include="Controllers\WWorksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +296,21 @@
     <Content Include="Views\PositionUsers\Details.cshtml" />
     <Content Include="Views\PositionUsers\Edit.cshtml" />
     <Content Include="Views\PositionUsers\Index.cshtml" />
+    <Content Include="Views\UserTypes\Create.cshtml" />
+    <Content Include="Views\UserTypes\Delete.cshtml" />
+    <Content Include="Views\UserTypes\Details.cshtml" />
+    <Content Include="Views\UserTypes\Edit.cshtml" />
+    <Content Include="Views\UserTypes\Index.cshtml" />
+    <Content Include="Views\SystemUsers\Create.cshtml" />
+    <Content Include="Views\SystemUsers\Delete.cshtml" />
+    <Content Include="Views\SystemUsers\Details.cshtml" />
+    <Content Include="Views\SystemUsers\Edit.cshtml" />
+    <Content Include="Views\SystemUsers\Index.cshtml" />
+    <Content Include="Views\Branches\Create.cshtml" />
+    <Content Include="Views\Branches\Delete.cshtml" />
+    <Content Include="Views\Branches\Details.cshtml" />
+    <Content Include="Views\Branches\Edit.cshtml" />
+    <Content Include="Views\Branches\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

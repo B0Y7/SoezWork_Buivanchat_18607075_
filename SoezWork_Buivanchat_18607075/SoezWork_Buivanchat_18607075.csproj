@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PositionUsersController.cs" />
     <Compile Include="Controllers\WWorksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,8 +232,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -287,6 +288,11 @@
     <Content Include="Views\WWorks\Login.cshtml" />
     <Content Include="Views\WWorks\Dashboard.cshtml" />
     <Content Include="Views\WWorks\ListWork.cshtml" />
+    <Content Include="Views\PositionUsers\Create.cshtml" />
+    <Content Include="Views\PositionUsers\Delete.cshtml" />
+    <Content Include="Views\PositionUsers\Details.cshtml" />
+    <Content Include="Views\PositionUsers\Edit.cshtml" />
+    <Content Include="Views\PositionUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

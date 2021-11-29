@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SoezWork_Buivanchat_18607075.Models.PositionUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodePosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamePosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedUserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodePosition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamePosition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedUserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PositionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PositionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PositionId })
+        </td>
+    </tr>
+}
+
+</table>

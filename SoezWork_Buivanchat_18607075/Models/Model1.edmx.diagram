@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2722550dfe034a29a30c5b934eaed2bd" Name="Diagram1">
+      <Diagram DiagramId="1cee1c88066e40aeba9ed3dcea1132e9" Name="Diagram1">
         <EntityTypeShape EntityType="Graduation_Project_Work_ManagementModel.AccountUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Graduation_Project_Work_ManagementModel.Branch" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Graduation_Project_Work_ManagementModel.PositionUser" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

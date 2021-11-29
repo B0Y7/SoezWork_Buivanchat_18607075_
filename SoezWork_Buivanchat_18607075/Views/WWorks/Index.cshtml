@@ -1,0 +1,172 @@
+﻿@model IEnumerable<SoezWork_Buivanchat_18607075.Models.WWork>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Point)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PointTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOnepersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExcuSequenceDocumentid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SequencedocumentStepid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeremindFinish)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Documentaryid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsTemplate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDviqly)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Point)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PointTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOnepersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExcuSequenceDocumentid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SequencedocumentStepid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeremindFinish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Documentaryid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsTemplate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDviqly)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Workid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Workid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Workid })
+        </td>
+    </tr>
+}
+
+</table>

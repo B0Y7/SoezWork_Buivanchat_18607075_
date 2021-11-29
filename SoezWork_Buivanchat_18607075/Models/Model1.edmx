@@ -1,0 +1,1312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Graduation_Project_Work_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Display" Type="bit" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nchar" MaxLength="255" />
+          <Property Name="Images" Type="nchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="NameBranch" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" />
+          <Property Name="Email" Type="nchar" MaxLength="255" />
+          <Property Name="BranchParent" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="WardId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WardName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaxDebitAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="CooperationDay" Type="datetime" />
+          <Property Name="TotalDepartment" Type="int" />
+          <Property Name="TotalStaff" Type="int" />
+          <Property Name="Notdisplaysizecolor" Type="bit" />
+          <Property Name="MA_DVIQLY" Type="nchar" MaxLength="100" />
+          <Property Name="IsDisplay" Type="bit" />
+        </EntityType>
+        <EntityType Name="PositionUser">
+          <Key>
+            <PropertyRef Name="PositionId" />
+          </Key>
+          <Property Name="PositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodePosition" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="NamePosition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="datetime" />
+          <Property Name="AssignedUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UserCode" Type="nchar" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mobile" Type="nchar" MaxLength="50" />
+          <Property Name="Email" Type="nchar" MaxLength="255" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="LoginFailedCount" Type="int" />
+          <Property Name="LoginFailedCount2" Type="int" />
+          <Property Name="LoginFailedCount3" Type="int" />
+          <Property Name="LastChangedPassword" Type="datetime" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="ProfileImage" Type="nvarchar" MaxLength="500" />
+          <Property Name="PositionId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WProject">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeProject" Type="nchar" MaxLength="100" />
+          <Property Name="NameProject" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartDay" Type="datetime" />
+          <Property Name="EndDay" Type="datetime" />
+          <Property Name="PatchFile" Type="nchar" MaxLength="255" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" />
+          <Property Name="NumberDay" Type="int" />
+          <Property Name="ProjectGroupId" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="int" />
+        </EntityType>
+        <EntityType Name="WProjectGroup">
+          <Key>
+            <PropertyRef Name="ProjectGroupId" />
+          </Key>
+          <Property Name="ProjectGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameProjectGroup" Type="nvarchar" MaxLength="255" />
+          <Property Name="ColorCode" Type="nchar" MaxLength="255" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WProjectItem">
+          <Key>
+            <PropertyRef Name="ProjectItemId" />
+          </Key>
+          <Property Name="ProjectItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="CodeItem" Type="nchar" MaxLength="100" />
+          <Property Name="NameItem" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartDay" Type="datetime" />
+          <Property Name="EndDay" Type="datetime" />
+          <Property Name="PercentEstimate" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PercentEstimateTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PercentExcute" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PercentExcuteTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Code" Type="nchar" MaxLength="100" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WProjectPerson">
+          <Key>
+            <PropertyRef Name="ProjectPersionId" />
+          </Key>
+          <Property Name="ProjectPersionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WTypeOfWork">
+          <Key>
+            <PropertyRef Name="Typeofworkid" />
+          </Key>
+          <Property Name="Typeofworkid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeTypeofwork" Type="nchar" MaxLength="100" />
+          <Property Name="NameTypeofwork" Type="nvarchar" MaxLength="255" />
+          <Property Name="Storagetime" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StoragetimeTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OrderTypeofwork" Type="int" />
+          <Property Name="Isdisplay" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWork">
+          <Key>
+            <PropertyRef Name="Workid" />
+          </Key>
+          <Property Name="Workid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Point" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PointTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOnepersion" Type="bit" />
+          <Property Name="ExcuSequenceDocumentid" Type="int" />
+          <Property Name="SequencedocumentStepid" Type="int" />
+          <Property Name="TimeremindFinish" Type="datetime" />
+          <Property Name="IsRating" Type="tinyint" />
+          <Property Name="TypeRating" Type="int" />
+          <Property Name="TypeWork" Type="int" />
+          <Property Name="WorkLevel" Type="int" />
+          <Property Name="Documentaryid" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="IsTemplate" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkAtt">
+          <Key>
+            <PropertyRef Name="WorkAttid" />
+          </Key>
+          <Property Name="WorkAttid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="Passunlockfile" Type="nchar" MaxLength="100" />
+          <Property Name="Pathfile" Type="nchar" MaxLength="255" />
+          <Property Name="TypeFile" Type="nchar" MaxLength="10" />
+          <Property Name="SizeofFile" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SizeofFileTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkBrowse">
+          <Key>
+            <PropertyRef Name="WorkBrowseId" />
+          </Key>
+          <Property Name="WorkBrowseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkId" Type="int" />
+          <Property Name="Action" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkChat">
+          <Key>
+            <PropertyRef Name="WorkChatId" />
+          </Key>
+          <Property Name="WorkChatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToUserId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+          <Property Name="Username" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="WWorkCustomer">
+          <Key>
+            <PropertyRef Name="WorkCustomerid" />
+          </Key>
+          <Property Name="WorkCustomerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkDetail">
+          <Key>
+            <PropertyRef Name="WorkDetailid" />
+          </Key>
+          <Property Name="WorkDetailid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkDetailPerson">
+          <Key>
+            <PropertyRef Name="WorkDetailPersonid" />
+          </Key>
+          <Property Name="WorkDetailPersonid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkDetailid" Type="int" />
+          <Property Name="TypePerson" Type="int" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkLog">
+          <Key>
+            <PropertyRef Name="Worklogid" />
+          </Key>
+          <Property Name="Worklogid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="WorkDetailid" Type="int" />
+          <Property Name="Action" Type="nvarchar" MaxLength="255" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+          <Property Name="WorkPersonId" Type="int" />
+        </EntityType>
+        <EntityType Name="WWorkPerson">
+          <Key>
+            <PropertyRef Name="WorkPersonid" />
+          </Key>
+          <Property Name="WorkPersonid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="TypePerson" Type="int" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkRate">
+          <Key>
+            <PropertyRef Name="WorkRateid" />
+          </Key>
+          <Property Name="WorkRateid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workid" Type="int" />
+          <Property Name="Volume" Type="bit" />
+          <Property Name="Quality" Type="bit" />
+          <Property Name="Progress" Type="bit" />
+          <Property Name="Point" Type="float" />
+          <Property Name="Result" Type="bit" />
+          <Property Name="EndtDate" Type="datetime" />
+          <Property Name="RateUserId" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WWorkReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Content" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedUserId" Type="int" />
+          <Property Name="AssignedUserId" Type="int" />
+          <Property Name="MaDviqly" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="Graduation_Project_Work_ManagementModelStoreContainer">
+          <EntitySet Name="AccountUser" EntityType="Self.AccountUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PositionUser" EntityType="Self.PositionUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUser" EntityType="Self.SystemUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WProject" EntityType="Self.WProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WProjectGroup" EntityType="Self.WProjectGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WProjectItem" EntityType="Self.WProjectItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WProjectPerson" EntityType="Self.WProjectPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WTypeOfWork" EntityType="Self.WTypeOfWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWork" EntityType="Self.WWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkAtt" EntityType="Self.WWorkAtt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkBrowse" EntityType="Self.WWorkBrowse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkChat" EntityType="Self.WWorkChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkCustomer" EntityType="Self.WWorkCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkDetail" EntityType="Self.WWorkDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkDetailPerson" EntityType="Self.WWorkDetailPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkLog" EntityType="Self.WWorkLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkPerson" EntityType="Self.WWorkPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkRate" EntityType="Self.WWorkRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WWorkReport" EntityType="Self.WWorkReport" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Graduation_Project_Work_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Display" Type="Boolean" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="NameBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="BranchParent" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WardId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WardName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaxDebitAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="CooperationDay" Type="DateTime" Precision="3" />
+          <Property Name="TotalDepartment" Type="Int32" />
+          <Property Name="TotalStaff" Type="Int32" />
+          <Property Name="Notdisplaysizecolor" Type="Boolean" />
+          <Property Name="MA_DVIQLY" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="IsDisplay" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PositionUser">
+          <Key>
+            <PropertyRef Name="PositionId" />
+          </Key>
+          <Property Name="PositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodePosition" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NamePosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="DateTime" Precision="3" />
+          <Property Name="AssignedUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="LoginFailedCount" Type="Int32" />
+          <Property Name="LoginFailedCount2" Type="Int32" />
+          <Property Name="LoginFailedCount3" Type="Int32" />
+          <Property Name="LastChangedPassword" Type="DateTime" Precision="3" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="ProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PositionId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WProject">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeProject" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="NameProject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StartDay" Type="DateTime" Precision="3" />
+          <Property Name="EndDay" Type="DateTime" Precision="3" />
+          <Property Name="PatchFile" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="NumberDay" Type="Int32" />
+          <Property Name="ProjectGroupId" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WProjectGroup">
+          <Key>
+            <PropertyRef Name="ProjectGroupId" />
+          </Key>
+          <Property Name="ProjectGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProjectGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WProjectItem">
+          <Key>
+            <PropertyRef Name="ProjectItemId" />
+          </Key>
+          <Property Name="ProjectItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="CodeItem" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="NameItem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StartDay" Type="DateTime" Precision="3" />
+          <Property Name="EndDay" Type="DateTime" Precision="3" />
+          <Property Name="PercentEstimate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PercentEstimateTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PercentExcute" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PercentExcuteTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WProjectPerson">
+          <Key>
+            <PropertyRef Name="ProjectPersionId" />
+          </Key>
+          <Property Name="ProjectPersionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WTypeOfWork">
+          <Key>
+            <PropertyRef Name="Typeofworkid" />
+          </Key>
+          <Property Name="Typeofworkid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeTypeofwork" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="NameTypeofwork" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Storagetime" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StoragetimeTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OrderTypeofwork" Type="Int32" />
+          <Property Name="Isdisplay" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWork">
+          <Key>
+            <PropertyRef Name="Workid" />
+          </Key>
+          <Property Name="Workid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PointTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOnepersion" Type="Boolean" />
+          <Property Name="ExcuSequenceDocumentid" Type="Int32" />
+          <Property Name="SequencedocumentStepid" Type="Int32" />
+          <Property Name="TimeremindFinish" Type="DateTime" Precision="3" />
+          <Property Name="IsRating" Type="Byte" />
+          <Property Name="TypeRating" Type="Int32" />
+          <Property Name="TypeWork" Type="Int32" />
+          <Property Name="WorkLevel" Type="Int32" />
+          <Property Name="Documentaryid" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="IsTemplate" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkAtt">
+          <Key>
+            <PropertyRef Name="WorkAttid" />
+          </Key>
+          <Property Name="WorkAttid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="Passunlockfile" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Pathfile" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="TypeFile" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SizeofFile" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SizeofFileTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkBrowse">
+          <Key>
+            <PropertyRef Name="WorkBrowseId" />
+          </Key>
+          <Property Name="WorkBrowseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkId" Type="Int32" />
+          <Property Name="Action" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkChat">
+          <Key>
+            <PropertyRef Name="WorkChatId" />
+          </Key>
+          <Property Name="WorkChatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToUserId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkCustomer">
+          <Key>
+            <PropertyRef Name="WorkCustomerid" />
+          </Key>
+          <Property Name="WorkCustomerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkDetail">
+          <Key>
+            <PropertyRef Name="WorkDetailid" />
+          </Key>
+          <Property Name="WorkDetailid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkDetailPerson">
+          <Key>
+            <PropertyRef Name="WorkDetailPersonid" />
+          </Key>
+          <Property Name="WorkDetailPersonid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkDetailid" Type="Int32" />
+          <Property Name="TypePerson" Type="Int32" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkLog">
+          <Key>
+            <PropertyRef Name="Worklogid" />
+          </Key>
+          <Property Name="Worklogid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="WorkDetailid" Type="Int32" />
+          <Property Name="Action" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="WorkPersonId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WWorkPerson">
+          <Key>
+            <PropertyRef Name="WorkPersonid" />
+          </Key>
+          <Property Name="WorkPersonid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="TypePerson" Type="Int32" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkRate">
+          <Key>
+            <PropertyRef Name="WorkRateid" />
+          </Key>
+          <Property Name="WorkRateid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workid" Type="Int32" />
+          <Property Name="Volume" Type="Boolean" />
+          <Property Name="Quality" Type="Boolean" />
+          <Property Name="Progress" Type="Boolean" />
+          <Property Name="Point" Type="Double" />
+          <Property Name="Result" Type="Boolean" />
+          <Property Name="EndtDate" Type="DateTime" Precision="3" />
+          <Property Name="RateUserId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WWorkReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserId" Type="Int32" />
+          <Property Name="AssignedUserId" Type="Int32" />
+          <Property Name="MaDviqly" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Graduation_Project_Work_ManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountUsers" EntityType="Self.AccountUser" />
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="PositionUsers" EntityType="Self.PositionUser" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="WProjects" EntityType="Self.WProject" />
+          <EntitySet Name="WProjectGroups" EntityType="Self.WProjectGroup" />
+          <EntitySet Name="WProjectItems" EntityType="Self.WProjectItem" />
+          <EntitySet Name="WProjectPersons" EntityType="Self.WProjectPerson" />
+          <EntitySet Name="WTypeOfWorks" EntityType="Self.WTypeOfWork" />
+          <EntitySet Name="WWorks" EntityType="Self.WWork" />
+          <EntitySet Name="WWorkAtts" EntityType="Self.WWorkAtt" />
+          <EntitySet Name="WWorkBrowses" EntityType="Self.WWorkBrowse" />
+          <EntitySet Name="WWorkChats" EntityType="Self.WWorkChat" />
+          <EntitySet Name="WWorkCustomers" EntityType="Self.WWorkCustomer" />
+          <EntitySet Name="WWorkDetails" EntityType="Self.WWorkDetail" />
+          <EntitySet Name="WWorkDetailPersons" EntityType="Self.WWorkDetailPerson" />
+          <EntitySet Name="WWorkLogs" EntityType="Self.WWorkLog" />
+          <EntitySet Name="WWorkPersons" EntityType="Self.WWorkPerson" />
+          <EntitySet Name="WWorkRates" EntityType="Self.WWorkRate" />
+          <EntitySet Name="WWorkReports" EntityType="Self.WWorkReport" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Graduation_Project_Work_ManagementModelStoreContainer" CdmEntityContainer="Graduation_Project_Work_ManagementEntities">
+          <EntitySetMapping Name="AccountUsers">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.AccountUser">
+              <MappingFragment StoreEntitySet="AccountUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="NameBranch" ColumnName="NameBranch" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BranchParent" ColumnName="BranchParent" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="WardId" ColumnName="WardId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="WardName" ColumnName="WardName" />
+                <ScalarProperty Name="MaxDebitAmount" ColumnName="MaxDebitAmount" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CooperationDay" ColumnName="CooperationDay" />
+                <ScalarProperty Name="TotalDepartment" ColumnName="TotalDepartment" />
+                <ScalarProperty Name="TotalStaff" ColumnName="TotalStaff" />
+                <ScalarProperty Name="Notdisplaysizecolor" ColumnName="Notdisplaysizecolor" />
+                <ScalarProperty Name="MA_DVIQLY" ColumnName="MA_DVIQLY" />
+                <ScalarProperty Name="IsDisplay" ColumnName="IsDisplay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PositionUsers">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.PositionUser">
+              <MappingFragment StoreEntitySet="PositionUser">
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="CodePosition" ColumnName="CodePosition" />
+                <ScalarProperty Name="NamePosition" ColumnName="NamePosition" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LoginFailedCount2" ColumnName="LoginFailedCount2" />
+                <ScalarProperty Name="LoginFailedCount3" ColumnName="LoginFailedCount3" />
+                <ScalarProperty Name="LastChangedPassword" ColumnName="LastChangedPassword" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WProjects">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WProject">
+              <MappingFragment StoreEntitySet="WProject">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="CodeProject" ColumnName="CodeProject" />
+                <ScalarProperty Name="NameProject" ColumnName="NameProject" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="EndDay" ColumnName="EndDay" />
+                <ScalarProperty Name="PatchFile" ColumnName="PatchFile" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NumberDay" ColumnName="NumberDay" />
+                <ScalarProperty Name="ProjectGroupId" ColumnName="ProjectGroupId" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WProjectGroups">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WProjectGroup">
+              <MappingFragment StoreEntitySet="WProjectGroup">
+                <ScalarProperty Name="ProjectGroupId" ColumnName="ProjectGroupId" />
+                <ScalarProperty Name="NameProjectGroup" ColumnName="NameProjectGroup" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WProjectItems">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WProjectItem">
+              <MappingFragment StoreEntitySet="WProjectItem">
+                <ScalarProperty Name="ProjectItemId" ColumnName="ProjectItemId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="CodeItem" ColumnName="CodeItem" />
+                <ScalarProperty Name="NameItem" ColumnName="NameItem" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="EndDay" ColumnName="EndDay" />
+                <ScalarProperty Name="PercentEstimate" ColumnName="PercentEstimate" />
+                <ScalarProperty Name="PercentEstimateTotal" ColumnName="PercentEstimateTotal" />
+                <ScalarProperty Name="PercentExcute" ColumnName="PercentExcute" />
+                <ScalarProperty Name="PercentExcuteTotal" ColumnName="PercentExcuteTotal" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WProjectPersons">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WProjectPerson">
+              <MappingFragment StoreEntitySet="WProjectPerson">
+                <ScalarProperty Name="ProjectPersionId" ColumnName="ProjectPersionId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WTypeOfWorks">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WTypeOfWork">
+              <MappingFragment StoreEntitySet="WTypeOfWork">
+                <ScalarProperty Name="Typeofworkid" ColumnName="Typeofworkid" />
+                <ScalarProperty Name="CodeTypeofwork" ColumnName="CodeTypeofwork" />
+                <ScalarProperty Name="NameTypeofwork" ColumnName="NameTypeofwork" />
+                <ScalarProperty Name="Storagetime" ColumnName="Storagetime" />
+                <ScalarProperty Name="StoragetimeTotal" ColumnName="StoragetimeTotal" />
+                <ScalarProperty Name="OrderTypeofwork" ColumnName="OrderTypeofwork" />
+                <ScalarProperty Name="Isdisplay" ColumnName="Isdisplay" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorks">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWork">
+              <MappingFragment StoreEntitySet="WWork">
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="PointTotal" ColumnName="PointTotal" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsOnepersion" ColumnName="IsOnepersion" />
+                <ScalarProperty Name="ExcuSequenceDocumentid" ColumnName="ExcuSequenceDocumentid" />
+                <ScalarProperty Name="SequencedocumentStepid" ColumnName="SequencedocumentStepid" />
+                <ScalarProperty Name="TimeremindFinish" ColumnName="TimeremindFinish" />
+                <ScalarProperty Name="IsRating" ColumnName="IsRating" />
+                <ScalarProperty Name="TypeRating" ColumnName="TypeRating" />
+                <ScalarProperty Name="TypeWork" ColumnName="TypeWork" />
+                <ScalarProperty Name="WorkLevel" ColumnName="WorkLevel" />
+                <ScalarProperty Name="Documentaryid" ColumnName="Documentaryid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkAtts">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkAtt">
+              <MappingFragment StoreEntitySet="WWorkAtt">
+                <ScalarProperty Name="WorkAttid" ColumnName="WorkAttid" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="Passunlockfile" ColumnName="Passunlockfile" />
+                <ScalarProperty Name="Pathfile" ColumnName="Pathfile" />
+                <ScalarProperty Name="TypeFile" ColumnName="TypeFile" />
+                <ScalarProperty Name="SizeofFile" ColumnName="SizeofFile" />
+                <ScalarProperty Name="SizeofFileTotal" ColumnName="SizeofFileTotal" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkBrowses">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkBrowse">
+              <MappingFragment StoreEntitySet="WWorkBrowse">
+                <ScalarProperty Name="WorkBrowseId" ColumnName="WorkBrowseId" />
+                <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkChats">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkChat">
+              <MappingFragment StoreEntitySet="WWorkChat">
+                <ScalarProperty Name="WorkChatId" ColumnName="WorkChatId" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkCustomers">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkCustomer">
+              <MappingFragment StoreEntitySet="WWorkCustomer">
+                <ScalarProperty Name="WorkCustomerid" ColumnName="WorkCustomerid" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkDetails">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkDetail">
+              <MappingFragment StoreEntitySet="WWorkDetail">
+                <ScalarProperty Name="WorkDetailid" ColumnName="WorkDetailid" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkDetailPersons">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkDetailPerson">
+              <MappingFragment StoreEntitySet="WWorkDetailPerson">
+                <ScalarProperty Name="WorkDetailPersonid" ColumnName="WorkDetailPersonid" />
+                <ScalarProperty Name="WorkDetailid" ColumnName="WorkDetailid" />
+                <ScalarProperty Name="TypePerson" ColumnName="TypePerson" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkLogs">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkLog">
+              <MappingFragment StoreEntitySet="WWorkLog">
+                <ScalarProperty Name="Worklogid" ColumnName="Worklogid" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="WorkDetailid" ColumnName="WorkDetailid" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+                <ScalarProperty Name="WorkPersonId" ColumnName="WorkPersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkPersons">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkPerson">
+              <MappingFragment StoreEntitySet="WWorkPerson">
+                <ScalarProperty Name="WorkPersonid" ColumnName="WorkPersonid" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="TypePerson" ColumnName="TypePerson" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkRates">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkRate">
+              <MappingFragment StoreEntitySet="WWorkRate">
+                <ScalarProperty Name="WorkRateid" ColumnName="WorkRateid" />
+                <ScalarProperty Name="Workid" ColumnName="Workid" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="EndtDate" ColumnName="EndtDate" />
+                <ScalarProperty Name="RateUserId" ColumnName="RateUserId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WWorkReports">
+            <EntityTypeMapping TypeName="Graduation_Project_Work_ManagementModel.WWorkReport">
+              <MappingFragment StoreEntitySet="WWorkReport">
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserId" ColumnName="ModifiedUserId" />
+                <ScalarProperty Name="AssignedUserId" ColumnName="AssignedUserId" />
+                <ScalarProperty Name="MaDviqly" ColumnName="MaDviqly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

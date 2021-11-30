@@ -1,82 +1,271 @@
-﻿@model IEnumerable<SoezWork_Buivanchat_18607075.Models.AccountUser>
-
+﻿@*@model IEnumerable<SoezWork_Buivanchat_18607075.Models.AccountUser>*@
+@model PagedList.IPagedList<SoezWork_Buivanchat_18607075.Models.AccountUser>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!--   Core JS Files   -->
 
-<h2>Index</h2>
+<script src="~/assets/js/core/jquery.min.js"></script>
+<script src="~/assets/js/core/popper.min.js"></script>
+<script src="~/assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="~/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Plugin for the momentJs  -->
+<script src="~/assets/js/plugins/moment.min.js"></script>
+<!--  Plugin for Sweet Alert -->
+<script src="~/assets/js/plugins/sweetalert2.js"></script>
+<!-- Forms Validations Plugin -->
+<script src="~/assets/js/plugins/jquery.validate.min.js"></script>
+<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="~/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="~/assets/js/plugins/bootstrap-selectpicker.js"></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="~/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+<script src="~/assets/js/plugins/jquery.dataTables.min.js"></script>
+<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="~/assets/js/plugins/bootstrap-tagsinput.js"></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="~/assets/js/plugins/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="~/assets/js/plugins/fullcalendar.min.js"></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="~/assets/js/plugins/jquery-jvectormap.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="~/assets/js/plugins/nouislider.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<!-- Library for adding dinamically elements -->
+<script src="~/assets/js/plugins/arrive.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chartist JS -->
+<script src="~/assets/js/plugins/chartist.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="~/assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 
+<script src="~/assets/js/core/bootstrap-material-design.min.js"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="~/assets/demo/demo.js"></script>
+
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: cadetblue;
+            color: white;
+        }
+
+    .pagination {
+        display: inline;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+
+            .pagination a:first-child {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+
+            .pagination a:last-child {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+</style>
+@*TÌM KIẾM*@
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-controller="AccountUsers" asp-action="Index" method="get">
+    <div class="input-group" style="background-color:white; margin-top:15px;margin-bottom:10px">
+        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for... " aria-label="Search" aria-describedby="basic-addon2" name="searchString">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search fa-sm"></i>
+            </button>
+        </div>
+
+    </div>
+
+</form>
+<!--<button class="btn btn-primary" style="margin-left:15px;color:white!important;float:right;margin-top:15px">-->
+@*@Html.ActionLink("Thêm mới", "Create", null, null, new { @class = "btncreate", @style = "color:white" })*@
+@*@Html.ActionLink("Thêm mới", "Create")*@
+<!--</button>-->
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
-<table class="table">
+
+<table class="table" id="customers">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
+        <th style="text-align:center">
+
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
+        <th style="text-align:center">
+            Tên tài khoản
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        <th style="text-align:center">
+            Loại người dùng
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserTypeId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Display)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Images)
-        </th>
-        <th></th>
+
+        @*<th>
+                @Html.DisplayNameFor(model => model.Hide)
+            </th>*@
+        <th style="text-align:center">Thao tác</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfirmPassword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserTypeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Display)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Images)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center">
+            <td>
+                @Html.DisplayFor(modelItem => item.Images)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserTypeId)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Hide)
+                </td>*@
+            <td style="text-align:center">
+                <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
+                    @Html.ActionLink("Sửa", "Edit",@*"Words",*@             new { id = item.UserId }, new { @style = "color:white" })
+                </button>
+                <button class="btn btn-info" style="margin-left:15px;color:white!important;height:35px">
+                    @Html.ActionLink("Chi tiết", "Details",@*"Words",*@             new { id = item.UserId }, new { @style = "color:white" })
+                </button>
+                <button class="btn btn-danger" style="margin-left:15px;color:white!important;height:35px">
+                    @Html.ActionLink("Xoá", "Delete",@*"Words",*@             new { id = item.UserId }, new { @style = "color:white" })
+                </button>
+            </td>
+        </tr>
+        @*@Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+            }*@
+    }
 </table>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+
+
+
+
+
+
+
+@*<h4>Quản lý tài khoản</h4>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Display)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Images)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Display)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Images)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            </td>
+        </tr>
+    }
+
+    </table>*@

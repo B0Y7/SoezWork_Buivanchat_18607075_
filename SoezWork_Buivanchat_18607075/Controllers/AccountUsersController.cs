@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using SoezWork_Buivanchat_18607075.Models;
 
 namespace SoezWork_Buivanchat_18607075.Controllers
@@ -17,11 +18,34 @@ namespace SoezWork_Buivanchat_18607075.Controllers
         private Graduation_Project_Work_ManagementEntities db = new Graduation_Project_Work_ManagementEntities();
 
         // GET: AccountUsers
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10, long? id = null)
         {
-            return View(db.AccountUsers.ToList());
-        }
+            var model = ListAllPading(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
 
+            return View(model);
+            //return View(db.AccountUsers.ToList());
+        }
+        public IEnumerable<AccountUser> ListAllPading(string SearchString, int page, int pageSize)
+        {
+            //select Name from Category,Words where Category.Id = Words.id_cate
+            IQueryable<AccountUser> model = db.AccountUsers;
+            //model = from w in db.Words
+            //        join c in db.Categories
+            //        on w.id_cate equals c.Id
+            //        where w.id_cate == categoryID
+            //        select new Word()
+            //        {
+            //            name_cate = c.Name
+            //        };
+
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                model = model.Where(x => x.UserName.Contains(SearchString) || x.UserName.Contains(SearchString));
+            }
+            return model.OrderByDescending(x => x.UserName).ToPagedList(page, pageSize);
+        }
         // GET: AccountUsers/Details/5
         public ActionResult Details(int? id)
         {

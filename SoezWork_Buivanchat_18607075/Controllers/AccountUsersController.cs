@@ -58,7 +58,8 @@ namespace SoezWork_Buivanchat_18607075.Controllers
             {
                 return HttpNotFound();
             }
-            return View(accountUser);
+            return PartialView(accountUser);
+            //return View(accountUser);
         }
 
         // GET: AccountUsers/Create
@@ -84,7 +85,13 @@ namespace SoezWork_Buivanchat_18607075.Controllers
 
             return View(accountUser);
         }
-
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            //
+            //xu ly upload
+            file.SaveAs(Server.MapPath("~/Content/Images/"+file.FileName));
+            return "/Content/Images/" + file.FileName;
+        }
         // GET: AccountUsers/Edit/5
         public ActionResult Edit(int? id)
         {

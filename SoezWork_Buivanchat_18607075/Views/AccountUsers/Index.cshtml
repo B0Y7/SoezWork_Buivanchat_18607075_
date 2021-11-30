@@ -12,6 +12,7 @@
 <script src="~/assets/js/core/popper.min.js"></script>
 <script src="~/assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="~/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
 <!-- Plugin for the momentJs  -->
 <script src="~/assets/js/plugins/moment.min.js"></script>
 <!--  Plugin for Sweet Alert -->
@@ -113,7 +114,7 @@
             }
 </style>
 @*TÌM KIẾM*@
-<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-controller="AccountUsers" asp-action="Index" method="get">
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-controller="AccountUsers" asp-action="Index" method="get" style="float:right">
     <div class="input-group" style="background-color:white; margin-top:15px;margin-bottom:10px">
         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for... " aria-label="Search" aria-describedby="basic-addon2" name="searchString">
         <div class="input-group-append">
@@ -132,6 +133,12 @@
 <p>
     @Html.ActionLink("Thêm mới", "Create")
 </p>
+@*<button onclick="btnCreate()">Thêm mới</button>*@
+@*<div id="create">
+        <div id="pageCreate">
+
+        </div>
+    </div>*@
 
 <table class="table" id="customers">
     <tr>
@@ -155,7 +162,8 @@
     {
         <tr style="text-align:center">
             <td>
-                @Html.DisplayFor(modelItem => item.Images)
+                @*@Html.DisplayFor(modelItem => item.Images)*@
+                <img src="@Html.DisplayFor(modelItem => item.Images)" width="50" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
@@ -166,18 +174,21 @@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Hide)
                 </td>*@
-            <td style="text-align:center">
-                <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
-                    @Html.ActionLink("Sửa", "Edit",@*"Words",*@             new { id = item.UserId }, new { @style = "color:white" })
-                </button>
-                <button class="btn btn-info" style="margin-left:15px;color:white!important;height:35px">
-                    @Html.ActionLink("Chi tiết", "Details",@*"Words",*@             new { id = item.UserId }, new { @style = "color:white" })
-                </button>
-                <button class="btn btn-danger" style="margin-left:15px;color:white!important;height:35px">
-                    @Html.ActionLink("Xoá", "Delete",@*"Words",*@             new { id = item.UserId }, new { @style = "color:white" })
-                </button>
-            </td>
+        <td style="text-align:center">
+            <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
+                @Html.ActionLink("Sửa", "Edit", new { id = item.UserId }, new { @style = "color:white" })
+            </button>
+            <button class="btn btn-info" style="margin-left:15px;color:white!important;height:35px">
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId }, new { @style = "color:white" })
+                @*<a href="javascript:void(0);" class="anchorDetail" data-id="@item.UserId">Details</a>*@
+            </button>
+            <button class="btn btn-danger" style="margin-left:15px;color:white!important;height:35px">
+                @Html.ActionLink("Xoá", "Delete", new { id = item.UserId }, new { @style = "color:white" })
+            </button>
+            
+        </td>
         </tr>
+
         @*@Html.PagedListPager(Model, page => Url.Action("Index",
             new { page }))
             }*@
@@ -187,8 +198,50 @@ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.Page
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
+@*<script>
+        //list att
+        function InitializebtnCreate(a) {
+            $('#create').dialog({
+                autoOpen: false,
+                resizable: false,
+                width: '80%',
+                height: 'auto',
+                modal: true
+            });
+        }
+        function closeDialogbtnCreate(a) {
+            $('#create').dialog('close');
+        }
+        function showHideItembtnCreate() {
+            //
+            $('#create').dialog('open');
+            $("#create").dialog("option", "title", "Thêm mới Tài khoản");
+            //$('#inputSubmit').attr('value', '');
+
+            //$("#idtypefile").val(b);
 
 
+        }
+        function btnCreate() {
+            //alert('ok');
+            /*ShowLoading();*/
+
+            //$.ajax({
+            //    url: "/AccountUsers/Create",
+            //    method: "GET",
+            //    /* data: { Id: id },*/
+            //    dataType: "html",
+            //}).done(function (rs) {
+            //    $("#pageCreate").html(rs);
+            //    /* HideLoading();*/
+            //});
+            InitializebtnCreate();
+            $.get('@Url.Action("Create", "AccountUsers")', function (html) {
+                $("#pageCreate").html(html);
+            });
+            showHideItembtnCreate();
+        }
+    </script>*@
 
 
 

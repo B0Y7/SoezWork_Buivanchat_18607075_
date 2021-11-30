@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>AccountUser</h4>
         <hr />
@@ -84,12 +84,21 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
-            </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div class="form-inline">
+            Chọn ảnh đại diện
+            @*<input type="text" name="picture" id="picture" class="form-control" />*@
+            @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control", @name = "picture", @id = "picture" } })
+            <input type="file" id="fileUpload" accept="image/*" name="fileUpload" style="display:none" />
+            <input type="button" id="btnUpload" value="..." class="btn btn-success" />
+            <img id="pictureUpload" width="300" />
+            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
@@ -103,7 +112,44 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+@section upload {
+    <script>
+        $(function () {
+            //đăng ký sự kiện click nút btnUpload
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+            //bắt sự kiện trên data của file upload
+            $('#fileUpload').change(function () {
+                //kiểm tra trình duyệt có hỗ trợ form-data object hay không?
+                if (window.FormData !== undefined) {
+                    //lấy dữ liệu trên fileUpload
+                    var fileUpload = $('#fileUpload').get(0);
+                    var files = fileUpload.files;
+                    //tạo đối tượng formdata
+                    var formData = new FormData();
+                    //đưa dữ liệu vào form
+                    formData.append('file', files[0]);
+                    $.ajax(
+                        {
+                            type: 'POST',
+                            url: '/AccountUsers/ProcessUpload',
+                            contentType: false,//khong co header
+                            processData: false,//khoong  xu ly du lieu
+                            data: formData,
+                            success: function (urlImage) {
+                                $('#pictureUpload').attr('src', urlImage);
+                                $('#picture').val(urlImage);
+                            },
+                            error: function (err) {
+                                alert('Loi roi: '+ err.statusText);
+                            }
+                        })
+                }
+            });
+        });
+    </script>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

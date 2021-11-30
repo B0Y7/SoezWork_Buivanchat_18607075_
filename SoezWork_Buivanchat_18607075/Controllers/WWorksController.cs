@@ -160,6 +160,7 @@ namespace SoezWork_Buivanchat_18607075.Controllers
                     //add session               
                     Session["UserName"] = data.FirstOrDefault().UserName;
                     Session["Id"] = data.FirstOrDefault().UserId;
+                    Session["Image"] = data.FirstOrDefault().Images;
                     return RedirectToAction("Dashboard");
                 }
                 else

@@ -66,7 +66,9 @@ namespace SoezWork_Buivanchat_18607075.Controllers
         // GET: AccountUsers/Create
         public ActionResult Create()
         {
-            return View();
+            AccountUser accountUserModel = new AccountUser();
+            accountUserModel.UserTypeCollection = db.UserTypes.ToList<UserType>();
+            return View(accountUserModel);
         }
 
         // POST: AccountUsers/Create
@@ -101,6 +103,7 @@ namespace SoezWork_Buivanchat_18607075.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             AccountUser accountUser = db.AccountUsers.Find(id);
+            accountUser.UserTypeCollection = db.UserTypes.ToList<UserType>();
             if (accountUser == null)
             {
                 return HttpNotFound();

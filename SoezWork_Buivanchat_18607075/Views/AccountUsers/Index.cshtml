@@ -175,10 +175,11 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    .ui-dialog-title{
-        color:black;
-        
+
+    .ui-dialog-title {
+        color: black;
     }
+
     .ui-dialog .ui-dialog-titlebar {
         background-color: #648ea5 !important;
         height: 45px;
@@ -307,11 +308,11 @@
 @*@Html.ActionLink("Thêm mới", "Create")*@
 <!--</button>-->
 @*<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>*@
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>*@
 <button onclick="btnCreate()">Thêm mới</button>
 <div id="pageCreate"></div>
-
+<div id="pageEdit"></div>
 
 <table class="table" id="customers">
     <tr>
@@ -352,9 +353,11 @@
                     @Html.DisplayFor(modelItem => item.Hide)
                 </td>*@
             <td style="text-align:center">
-                <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.UserId }, new { @style = "color:white" })
-                </button>
+                @*<button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.UserId }, new { @style = "color:white" })
+                    </button>*@
+                <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px" onclick="btnEdit(@item.UserId)">Sửa</button>
+                
                 <button class="btn btn-info" style="margin-left:15px;color:white!important;height:35px">
                     @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId }, new { @style = "color:white" })
                     @*<a href="javascript:void(0);" class="anchorDetail" data-id="@item.UserId">Details</a>*@
@@ -398,7 +401,32 @@ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.Page
             $('#pageCreate').dialog('open');
             $("#pageCreate").dialog("option", "title", "Thêm mới Tài khoản");
         }
-    </script>}
+    </script>
+
+}
+@section edit {
+    <script type="text/javascript">
+    
+        function btnEdit(id) {
+            /*alert('ok');*/
+            /*ShowLoading();*/
+            $("#pageEdit").dialog(
+                {
+                    autoOpen: false,
+                    resizable: false,
+                    width: 'auto',
+                    height: '600',
+                    modal: true,
+                });
+            $.get('@Url.Action("Edit", "AccountUsers")/?id=' + id, function (html) {
+                $("#pageEdit").html(html);
+                        });
+            $('#pageEdit').dialog('open');
+            $("#pageEdit").dialog("option", "title", "Thêm mới Tài khoản");
+        }
+    </script>
+}
+
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }

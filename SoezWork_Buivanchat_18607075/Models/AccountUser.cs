@@ -24,5 +24,7 @@ namespace SoezWork_Buivanchat_18607075.Models
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Images { get; set; }
+
+
     }
 }

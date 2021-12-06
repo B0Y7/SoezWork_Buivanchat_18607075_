@@ -1,18 +1,21 @@
 ﻿@*@model IEnumerable<SoezWork_Buivanchat_18607075.Models.AccountUser>*@
 @model PagedList.IPagedList<SoezWork_Buivanchat_18607075.Models.AccountUser>
-@using PagedList.Mvc
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Mylayout.cshtml";
+    var modelUserType = ViewBag.UserTypes;
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <!--   Core JS Files   -->
-
+@*<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>*@
 <script src="~/assets/js/core/jquery.min.js"></script>
 <script src="~/assets/js/core/popper.min.js"></script>
 <script src="~/assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="~/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
+<script src="~/Scripts/bootstrap.min.js"></script>
 <!-- Plugin for the momentJs  -->
 <script src="~/assets/js/plugins/moment.min.js"></script>
 <!--  Plugin for Sweet Alert -->
@@ -113,6 +116,179 @@
                 border-bottom-right-radius: 5px;
             }
 </style>
+<style>
+    .ui-widget-overlay {
+        background: rgba(0,0,0,.25);
+        opacity: 1 !important;
+        /*filter: alpha(opacity=100) !important;*/
+        z-index: 1049 !important;
+    }
+
+    .ui-widget-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.25) !important;
+        opacity: 1 !important;
+    }
+
+    .ui-front {
+        z-index: 100;
+    }
+
+    *, :after, :before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .ui-dialog {
+        padding: 2px;
+        border: 1px solid #4a8ea2;
+        border-radius: 3px;
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%,-50%);
+    }
+
+    .ui-dialog, .ui-jqdialog {
+        z-index: 1050 !important;
+        background-color: #FFF;
+        padding: 0;
+        border: 1px solid #DDD;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+    }
+
+    .ui-dialog, .ui-jqdialog, .ui-menu {
+        -webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+    }
+
+    .ui-front {
+        z-index: 100;
+    }
+
+    *, :after, :before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .ui-dialog-title{
+        color:black;
+        
+    }
+    .ui-dialog .ui-dialog-titlebar {
+        background-color: #648ea5 !important;
+        height: 45px;
+        line-height: 45px;
+        position: relative;
+        border: 1px solid #4a8ea2;
+        border-radius: 3px;
+        color: white;
+    }
+
+    .ui-dialog .ui-dialog-titlebar, .ui-dialog .ui-jqdialog-titlebar, .ui-jqdialog .ui-dialog-titlebar, .ui-jqdialog .ui-jqdialog-titlebar {
+        background-color: #F1F1F1;
+        font-size: 16px;
+        color: #669FC7;
+        padding: 0;
+    }
+
+    .ui-draggable-handle {
+        -ms-touch-action: none;
+        touch-action: none;
+    }
+
+    .ui-helper-clearfix {
+        min-height: 0;
+    }
+
+    .ui-dialog .ui-dialog-titlebar-close {
+        position: absolute;
+        content: '';
+        top: 50% !important;
+        height: 21px;
+        width: 21px;
+        line-height: 21px;
+        background: #ccc !important;
+        transform: translateY(-50%);
+    }
+
+    .ui-dialog .ui-dialog-titlebar-close, .ui-dialog .ui-jqdialog-titlebar-close, .ui-jqdialog .ui-dialog-titlebar-close, .ui-jqdialog .ui-jqdialog-titlebar-close {
+        border: none;
+        background: 0 0;
+        opacity: .4;
+        color: #D15B47;
+        padding: 0;
+        top: 50%;
+        right: 8px !important;
+        text-align: center;
+    }
+
+    button, input, select, textarea {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: 25px;
+    }
+
+        button, html input[type=button], input[type=reset], input[type=submit] {
+            -webkit-appearance: button;
+            cursor: pointer;
+        }
+
+    button, select {
+        text-transform: none;
+    }
+
+    button {
+        overflow: visible;
+    }
+
+    button, input, optgroup, select, textarea {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+    }
+
+    *, :after, :before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    button {
+        appearance: auto;
+        -webkit-writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        color: -internal-light-dark(black, white);
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
+        cursor: default;
+        background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+        box-sizing: border-box;
+        margin: 0em;
+        font: 400 13.3333px Arial;
+        padding: 1px 6px;
+        border-width: 2px;
+        border-style: outset;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+        border-image: initial;
+    }
+
+    .ui-dialog .ui-dialog-content {
+        float: left;
+        width: 1000px;
+    }
+</style>
 @*TÌM KIẾM*@
 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-controller="AccountUsers" asp-action="Index" method="get" style="float:right">
     <div class="input-group" style="background-color:white; margin-top:15px;margin-bottom:10px">
@@ -130,15 +306,12 @@
 @*@Html.ActionLink("Thêm mới", "Create", null, null, new { @class = "btncreate", @style = "color:white" })*@
 @*@Html.ActionLink("Thêm mới", "Create")*@
 <!--</button>-->
-<p>
+@*<p>
     @Html.ActionLink("Thêm mới", "Create")
-</p>
-@*<button onclick="btnCreate()">Thêm mới</button>*@
-@*<div id="create">
-        <div id="pageCreate">
+</p>*@
+<button onclick="btnCreate()">Thêm mới</button>
+<div id="pageCreate"></div>
 
-        </div>
-    </div>*@
 
 <table class="table" id="customers">
     <tr>
@@ -168,25 +341,29 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
+            @*@foreach (var i in modelUserType)
+                {*@
             <td>
                 @Html.DisplayFor(modelItem => item.UserTypeId)
+                @*@Html.DisplayFor(modelItem => modelItem.Where(x => x.Equals(item.UserTypeId)).Select(x => i.UserTypeName)).ToString())*@
             </td>
+            @*}*@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Hide)
                 </td>*@
-        <td style="text-align:center">
-            <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
-                @Html.ActionLink("Sửa", "Edit", new { id = item.UserId }, new { @style = "color:white" })
-            </button>
-            <button class="btn btn-info" style="margin-left:15px;color:white!important;height:35px">
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId }, new { @style = "color:white" })
-                @*<a href="javascript:void(0);" class="anchorDetail" data-id="@item.UserId">Details</a>*@
-            </button>
-            <button class="btn btn-danger" style="margin-left:15px;color:white!important;height:35px">
-                @Html.ActionLink("Xoá", "Delete", new { id = item.UserId }, new { @style = "color:white" })
-            </button>
-            
-        </td>
+            <td style="text-align:center">
+                <button class="btn btn-warning" style="margin-left:15px;color:white!important;height:35px">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.UserId }, new { @style = "color:white" })
+                </button>
+                <button class="btn btn-info" style="margin-left:15px;color:white!important;height:35px">
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId }, new { @style = "color:white" })
+                    @*<a href="javascript:void(0);" class="anchorDetail" data-id="@item.UserId">Details</a>*@
+                </button>
+                <button class="btn btn-danger" style="margin-left:15px;color:white!important;height:35px">
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.UserId }, new { @style = "color:white" })
+                </button>
+
+            </td>
         </tr>
 
         @*@Html.PagedListPager(Model, page => Url.Action("Index",
@@ -198,127 +375,109 @@ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.Page
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
-@*<script>
-        //list att
-        function InitializebtnCreate(a) {
-            $('#create').dialog({
-                autoOpen: false,
-                resizable: false,
-                width: '80%',
-                height: 'auto',
-                modal: true
-            });
-        }
-        function closeDialogbtnCreate(a) {
-            $('#create').dialog('close');
-        }
-        function showHideItembtnCreate() {
-            //
-            $('#create').dialog('open');
-            $("#create").dialog("option", "title", "Thêm mới Tài khoản");
-            //$('#inputSubmit').attr('value', '');
-
-            //$("#idtypefile").val(b);
-
-
-        }
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@section create {
+    <script type="text/javascript">
+    $.noConflict();
         function btnCreate() {
-            //alert('ok');
+            /*alert('ok');*/
             /*ShowLoading();*/
-
-            //$.ajax({
-            //    url: "/AccountUsers/Create",
-            //    method: "GET",
-            //    /* data: { Id: id },*/
-            //    dataType: "html",
-            //}).done(function (rs) {
-            //    $("#pageCreate").html(rs);
-            //    /* HideLoading();*/
-            //});
-            InitializebtnCreate();
+            $("#pageCreate").dialog(
+                {
+                    autoOpen: false,
+                    resizable: false,
+                    width: 'auto',
+                    height: '600',
+                    modal: true,
+                });
             $.get('@Url.Action("Create", "AccountUsers")', function (html) {
                 $("#pageCreate").html(html);
-            });
-            showHideItembtnCreate();
+                        });
+            $('#pageCreate').dialog('open');
+            $("#pageCreate").dialog("option", "title", "Thêm mới Tài khoản");
         }
-    </script>*@
-
-
-
-
-
-@*<h4>Quản lý tài khoản</h4>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConfirmPassword)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserTypeId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Display)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Images)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmPassword)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserTypeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Display)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Images)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
-            </td>
-        </tr>
+    </script>}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
     }
 
-    </table>*@
+
+
+
+    @*<h4>Quản lý tài khoản</h4>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConfirmPassword)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserTypeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Display)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Images)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConfirmPassword)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserTypeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Display)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Images)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+                </td>
+            </tr>
+        }
+
+        </table>*@

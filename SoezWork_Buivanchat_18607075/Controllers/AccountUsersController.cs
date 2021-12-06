@@ -22,7 +22,8 @@ namespace SoezWork_Buivanchat_18607075.Controllers
         {
             var model = ListAllPading(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
-
+            IQueryable<UserType> UserTypes = db.UserTypes;
+            ViewBag.UserTypes = UserTypes;
             return View(model);
             //return View(db.AccountUsers.ToList());
         }
